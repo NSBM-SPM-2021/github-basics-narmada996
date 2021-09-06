@@ -66,3 +66,6 @@ body, html, .App, #root, .outer {
 .forgot-password a {
   color: #167bff;
 }
+button{
+  margin: 13px 12px 12px 10px;
+}

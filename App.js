@@ -37,7 +37,7 @@ import './App.css';
                   <input type="text" class="form-control" id="validationTooltip03" placeholder="Phone Number" required />
                   <div class="invalid-tooltip">
                     Please provide a valid city.
-                  </div>cd
+                  </div>
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="validationTooltip04">Guardians Name</label>
@@ -115,6 +115,7 @@ import './App.css';
                 </div>
               </div>
               <button class="btn btn-primary" type="submit">Submit form</button>
+              <input class="btn btn-primary" type="reset" value="Reset"></input>
             </form>
           </form >
         </div >
