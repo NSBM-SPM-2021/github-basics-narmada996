@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 
-  class App extends React.Component {
-    render() {
-      return (
+class App extends React.Component {
+  render() {
+    return (
         <div className="container">
           <nav class="navbar navbar-light bg-light">
             <div class="container" >
@@ -115,13 +115,13 @@ import './App.css';
                 </div>
               </div>
               <button class="btn btn-primary" type="submit">Submit form</button>
-              <input class="btn btn-primary" type="reset" value="Reset"></input>
+              <button class="btn btn-primary" type="reset" value="Reset">Reset</button>
             </form>
           </form >
         </div >
-      );
-    }
+    );
   }
+}
 
 
 
