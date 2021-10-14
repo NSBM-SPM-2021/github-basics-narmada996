@@ -2,9 +2,9 @@
 body {
   min-height: 100vh;
   display: flex;
-  font-weight: 400;
+  font-weight: 500;
   font-family: sans-serif;
-  color: white;
+  color: #ffffff;
   background: #070816;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #070816);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #070816); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -68,4 +68,5 @@ body, html, .App, #root, .outer {
 }
 button{
   margin: 13px 12px 12px 10px;
+   color: #167bff;
 }
