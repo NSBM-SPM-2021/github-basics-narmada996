@@ -11,64 +11,62 @@ const db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
-    database: "spm_librarymanagementsystem"
+    database: "std_registration"
 });
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 //View Book Details
-app.get("/api/get", (req,res) =>{
-    // const sqlSelect = "SELECT * FROM books_tb";
-    // db.query(sqlSelect, (err, result) => {
-    //     res.send(result);
-    // });
-    console.log("hello");
+app.get("/api/get", (req, res) => {
+    const sqlSelect = "SELECT * FROM student_registration";
+    db.query(sqlSelect, (err, result) => {
+        res.send(result);
+    });
 });
 //Insert Book Details
-app.post("/api/insert", (req,res) => {
+app.post("/api/insert", (req, res) => {
 
-    const bookid = req.body.bookid;
-    const isbnno = req.body.isbnno;
-    const booktitle = req.body.booktitle;
-    const author = req.body.author;
-    const publishdate = req.body.publishdate;
-    const addingdate = req.body.addingdate;
-    const pages = req.body.pages;
-    const price = req.body.price;
-    const source = req.body.source;
-    const remarks = req.body.remarks;
+    const Fname = req.body.Fname;
+    const Lname = req.body.Lname;
+    const Pno = req.body.Pno;
+    const Gname = req.body.Gname;
+    const Gno = req.body.Gno;
+    const add = req.body.add;
+    const email = req.body.email;
+    const faculty = req.body.faculty;
+    const degree = req.body.degree;
 
-    const sqlInsert = "INSERT INTO books_tb (Book_ID,ISBN_NO,Book_Title,Author,Publish_Date,Adding_Date,Pages,Price,Source,Remarks)VALUES(?,?,?,?,?,?,?,?,?,?)";
-    db.query(sqlInsert, [bookid,isbnno,booktitle,author,publishdate,addingdate,pages,price,source,remarks],(err, result) => {
+    const sqlInsert = "INSERT INTO student_registration (Fname,Lname,Pno,Gname,Gno,address,email,faculty,degree)VALUES(?,?,?,?,?,?,?,?,?)";
+    db.query(sqlInsert, [Fname, Lname, Pno, Gname, Gno, add, email, faculty, degree], (err, result) => {
         console.log(result);
     });
 });
 //Delete Book Details
-app.delete('/api/delete/:Book_ID',(req, res) => {
-    const deletebookid = req.params.Book_ID;
-    const sqlDelete = "DELETE FROM books_tb WHERE Book_ID = ?";
+app.delete('/api/delete/:id', (req, res) => {
+    const deletestudentid = req.params.id;
+    const sqlDelete = "DELETE FROM student_registration WHERE id = ?";
 
-    db.query(sqlDelete, deletebookid, (err, result) => {
+    db.query(sqlDelete, deletestudentid, (err, result) => {
         if (err) console.log(err);
     });
 });
 //Update Book Details
-app.put("/api/update",(req,res) => {
-    const updatebookid = req.body.updatebookid;
-    const updateisbnno = req.body.updateisbnno;
-    const updatebooktitle = req.body.updatebooktitle;
-    const updateauthor = req.body.updateauthor;
-    const updatepublishdate = req.body.updatepublishdate;
-    const updateaddingdate = req.body.updateaddingdate;
-    const updatepages = req.body.updatepages;
-    const updateprice = req.body.updateprice;
-    const updatesource = req.body.updatesource;
-    const updateremarks = req.body.updateremarks;
+app.put("/api/update", (req, res) => {
+    const updateid = req.body.updateid;
+    const updateFname = req.body.updateFname;
+    const updateLname = req.body.updateLname;
+    const updatePno = req.body.updatePno;
+    const updateGname = req.body.updateGname;
+    const updateGno = req.body.updateGno;
+    const updateaddress = req.body.updateaddress;
+    const updateemail = req.body.updateemail;
+    const updatefaculty = req.body.updatefaculty;
+    const updatedegree = req.body.updatedegree;
 
-    var sqlUpdate = "UPDATE LOW_PRIORITY IGNORE books_tb SET ISBN_NO = ?, Book_Title = ?, Author = ?, Publish_Date = ?, Adding_Date = ?, Pages = ?, Price = ?, Source = ?, Remarks = ? WHERE Book_ID = ?";
+    var sqlUpdate = "UPDATE LOW_PRIORITY IGNORE student_registration SET Fname = ?, Lname = ?, Pno = ?, Gname = ?, Gno = ?, address = ?, email = ?, faculty = ?, degree = ? WHERE id = ?";
     console.log(sqlUpdate);
-    db.query(sqlUpdate,[updateisbnno,updatebooktitle,updateauthor,updatepublishdate,updateaddingdate,updatepages,updateprice,updatesource,updateremarks,updatebookid],(err, result) => {
+    db.query(sqlUpdate, [updateFname, updateLname, updatePno, updateGname, updateGno, updateaddress, updateemail, updatefaculty, updatedegree, updateid], (err, result) => {
         if (err) console.log(err);
         console.log(result);
     });
